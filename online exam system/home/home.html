@@ -1,0 +1,191 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A powerful, useful, responsive, ideal online exam web portal for your school">
+    <meta name="keywords" content="asp.net online exam, school online exam, school announcement, exam">
+    <title>Online Exam- Log In</title>
+    <link href="/Content/kendo/css?v=EoExtBXPj2-aKNmGkf9v2h7GdE-upcXSBgqXerfBZ-41" rel="stylesheet"/>
+    <link href="http://localhost/online%20exam%20system/home/home.css" rel="stylesheet"/>
+    
+
+    <link href="/Content/css?v=swnb8zh305zK-3mIXp0qqqIEgfQUQj75fDVruZFNMN01" rel="stylesheet"/>
+
+    <script src="/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1"></script>
+
+    <script src="/bundles/jquery?v=2u0aRenDpYxArEyILB59ETSCA2cfQkSMlxb6jbMBqf81"></script>
+
+    <script src="/bundles/kendo?v=NNn02k7MwRlKsxfLcThtev7vwOHQIwyHm8q-V0YT69Y1"></script>
+
+    <script src="/bundles/custom?v=l1TvQEcyYMEAd8gYAJ3Pci5cNxDOkAY80o3igK4NUSs1"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" /> <!--browser's tab icon-->
+    <style>
+        
+        body {
+            padding-top: 10px;
+        }
+
+       
+
+        .descriptionText {
+            padding-top: 10px;
+            font-size: 17px;
+        }
+
+        .row-container {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .btn-custom {
+            width: 100%;
+        }
+
+        .w3-third {
+            padding-right: 10px;
+        }
+
+        .title-container {
+            padding: 8px 0px 32px 0px;
+        }
+
+        .homepageContainer {
+            padding: 50px;
+        }
+
+        @media (max-width:415px) {
+            #myNavbar {
+                width: 100%;
+            }
+
+            footer {
+                width: 100%;
+            }
+
+            .homepageContainer {
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+
+            .row-container {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+
+            .w3-third {
+                padding-right: 0px;
+            }
+
+            .row {
+                padding-left: 5px;
+                padding-right: 5px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <Body background="http://localhost/online%20exam%20system/img/bg.jpg">   
+    
+<div class="w3-container homepageContainer" id="login">
+    <div class="row row-container">
+        <div class="row col-md-12">
+            <header class="row text-center" style="padding-bottom:16px;padding-top:10px;margin-left: 10px;">
+                <h3><b><i class="glyphicon glyphicon-user"></i> Log In</b></h3>
+            </header>
+        </div>
+        <div class="row col-md-12">
+        </div>
+
+        <div class="w3-third w3-margin-bottom" style="margin-left:60px ;">
+            <div class="w3-card-4" style="width: 550px;background-color: white;">
+                <div class="w3-container text-center">
+                    <h3><b>Student</b></h3>
+                    <h4 class="w3-opacity">Log In as Student</h4>
+                </div>
+                <img src="http://localhost/online%20exam%20system/img/user.png" alt="Student" style="width:50%;margin-left: 150px;">
+                <div class="w3-container">
+                    <p class="descriptionText">A student can take the exam through the system, view announcements made by the teacher, and view exam history to revise the pass exam's answers.</p>
+                    <p>
+                        <a class="btn btn-custom" href="http://localhost/online%20exam%20system/login/slogin/slogin.html">Log In</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-third w3-margin-bottom" style="padding-right:0px;margin-left:190px ;">
+            <div class="w3-card-4" style="width: 550px;background-color: white;">
+                <div class="w3-container text-center">
+                    <h3><b>Admin</b></h3>
+                    <h4 class="w3-opacity">Log In as Admin</h4>
+                </div>
+                <img src="http://localhost/online%20exam%20system/img/admin.png" alt="Admin" style="width:53%;margin-left: 160px;">
+                <div class="w3-container">
+                    <p class="descriptionText">An admin can set up system time zone, manage all users account, classes and subjects.</p>
+                    <br />
+                    <p>
+                        <a class="btn btn-custom" href="http://localhost/online%20exam%20system/login/alogin/alogin.html">Log In</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $('#successMessage').delay(1500).fadeOut(300);
+    function openDetails(Id) {
+        var openDetailButtonId = "#" + Id + "_Button";
+        var detailContainerId = "#" + Id + "_Answer";
+        var icon = "#" + Id + "_Icon";
+        if ($(detailContainerId).is(":visible")) {
+            $(detailContainerId).slideUp("fast", function () { });
+            $(detailContainerId).hide();
+            $(icon).removeClass("fa fa-minus");
+            $(icon).addClass("fa fa-plus");
+        }
+        else {
+            $(detailContainerId).slideDown("fast", function () { });
+            $(detailContainerId).show();
+            $(icon).removeClass("fa fa-plus");
+            $(icon).addClass("fa fa-minus");
+        }
+    }
+
+  
+</script>
+
+    <script src="/bundles/jquery?v=2u0aRenDpYxArEyILB59ETSCA2cfQkSMlxb6jbMBqf81"></script>
+
+    <script src="/bundles/jqueryval?v=ewwbEwxCzNIunbw9c2Y5X5_ldbOkIBIkUo-LvchX7I81"></script>
+
+    <script src="/bundles/kendo?v=NNn02k7MwRlKsxfLcThtev7vwOHQIwyHm8q-V0YT69Y1"></script>
+
+    <script src="/bundles/bootstrap?v=M4Nk6kIOwMFflsEKET0iPL9i5YBqbzMzvUOrd8gyCnw1"></script>
+
+    
+    <script>
+        // Toggle between showing and hiding the sidebar
+        function w3_open() {
+            if (mySidebar.style.display === 'block') {
+                $('#mySidebar').hide();
+                $('#myOverlay').hide();
+            } else {
+                $('#mySidebar').show();
+                $('#myOverlay').show();
+            }
+        }
+        // Close the sidebar with the close button
+        function w3_close() {
+            $('#mySidebar').hide();
+            $('#myOverlay').hide();
+        }
+    </script>  
+</body>
+</html>

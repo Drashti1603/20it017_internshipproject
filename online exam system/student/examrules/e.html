@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A powerful, useful, responsive, ideal online exam web portal for your school">
+    <meta name="keywords" content="asp.net online exam, school online exam, school announcement, exam">
+    <title>General Exam Rules</title>
+    <link href="/Content/kendo/css?v=EoExtBXPj2-aKNmGkf9v2h7GdE-upcXSBgqXerfBZ-41" rel="stylesheet"/>
+    <link href="http://localhost/online%20exam%20system/student/announcements/a.css" rel="stylesheet"/>
+    <link href="http://localhost/online%20exam%20system/student/examrules/e.css" rel="stylesheet"/>
+    <link href="http://localhost/online%20exam%20system/home/home.css" rel="stylesheet"/>
+    <link href="http://localhost/online%20exam%20system/student/manageAccount/viewprofile/vp.css" rel="stylesheet"/>
+
+    <link href="/Content/css?v=swnb8zh305zK-3mIXp0qqqIEgfQUQj75fDVruZFNMN01" rel="stylesheet"/>
+
+    <script src="/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1"></script>
+
+    <script src="/bundles/jquery?v=2u0aRenDpYxArEyILB59ETSCA2cfQkSMlxb6jbMBqf81"></script>
+
+    <script src="/bundles/kendo?v=NNn02k7MwRlKsxfLcThtev7vwOHQIwyHm8q-V0YT69Y1"></script>
+
+    <script src="/bundles/custom?v=l1TvQEcyYMEAd8gYAJ3Pci5cNxDOkAY80o3igK4NUSs1"></script>
+
+    <script src="/bundles/pako?v=AiINIs2SjJPxaUkuoDBvrG4-7iBN-jdwhvOswC72N1o1"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+ <!-- Load Pako ZLIB library to enable PDF compression -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" /> <!--browser's tab icon-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></script>
+    <!--export to pdf template-->
+    <script type="x/kendo-template" id="page-template">
+        <div class="page-template">
+            <div class="header">
+                <div style="float: right">Page #: pageNum # of #: totalPages #</div>
+                Exam
+            </div>
+            <div class="footer">
+                Page #: pageNum # of #: totalPages #
+            </div>
+        </div>
+    </script>
+    <style>
+        #mainContainerLayout{
+            margin-left:290px;
+            margin-top:15px;
+            margin-right:10px;
+        }
+    </style>
+</head>
+<body class="w3-light-grey">
+
+
+  </section>
+
+    <!-- Top container -->
+    <div id="topBar" class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+        <button type="button" class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+        <span class="w3-bar-item w3-right"><form action="/Account/LogOff" class="navbar-right" id="logoutForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="40DlStOm_kTlQo7Icebx3yPxXWHBLRj9oGjxhwl6lDQ3z9y6cDqE1Pm0cmO7u7aNAzqRyu0n21GakFHYzal43Sx_6J3fU08bcICdvxcFVJIu1CYCqkvyOgGVn_PLlYK8WxTzfIfkzPgEBomM3nBCOA2" />    <ul style="list-style:none" class="btn btn-menu">
+        <li class="menu-item" id="userNameMenu"><i class="glyphicon glyphicon-user"></i> </li>
+    </ul>
+        <ul style="list-style:none" class="btn btn-menu">
+          <li id="logOffMenu"><a href="http://localhost/online%20exam%20system/home/home.html">Log out</a></li>
+        </ul> 
+</form>
+<script>
+    $(document).ready(function () {
+        if ('GeneralExamRules' == 'TakeExam') {
+            //$('#userNameMenu').hide();
+            $('#logOffMenu').hide();
+            //document.getElementById("userNameMenu").disabled = true;
+            //document.getElementById("logOffMenu").disabled = true;
+        }
+    });
+</script>
+</span>
+
+    </div>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:280px;overflow-y: scroll !important;max-height: 95% !important;" id="mySidebar">
+        <br>
+        <div class="w3-container w3-row" style="padding-top:0;padding-bottom:0">
+            <div class="w3-col s4">
+                <img src="http://localhost/online%20exam%20system/img/oe2.png" class="w3-margin-right logoLeftNav">                
+            </div>
+            <div class="w3-col s8 w3-bar" style="padding-top:0;padding-bottom:0">
+                <span>
+                    Welcome,
+                    <strong><br>
+student2                    </strong>
+                </span>
+                <br>
+            </div>
+        </div>
+        <hr>
+        <div class="w3-bar-block">
+            
+          <!--when student is sitting for an exam, the menu did not show the other
+link to prevent student exit the exam accidentally, since a student only has one attempt-->
+
+<a href="http://localhost/online%20exam%20system/student/examrules/e.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-warning"></i><span style="padding-left: 10px;">General Exam Rules</span></a>
+<a href="http://localhost/online%20exam%20system/student/availableExams/ae.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-certificate"></i><span style="padding-left:10px;">Available Exams</span></a>
+
+<a href="http://localhost/online%20exam%20system/student/Dashboard/dd.html" class="w3-bar-item w3-button w3-padding "><i class="fa fa-dashboard"></i><span style="padding-left:10px;">Dashboard</span></a>
+<button href="#" class="w3-bar-item w3-button w3-padding " onclick="displayItems()"><i class="fa fa-cog"></i><span style="padding-left:10px;">Manage Account</span> <i class="fa fa-sort-down" id="downIcon"></i><i class="fa fa-sort-asc" id="upIcon" style="display:none"></i></button>
+<div id="manageAccountItems" style="display: flex;">
+<ul style="list-style:none">
+<li>
+<a href="http://localhost/online%20exam%20system/student/mangementAccount/viewProfile/vp.php" class="w3-bar-item w3-button w3-padding "><i class="fa fa-user"></i><span style="padding-left:10px;">View Profile</span></a>
+</li>
+
+</ul>
+</div>
+
+<br />
+</div>
+    </nav>
+
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    
+    <section id="tmPortfolio">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="tm-portfolio-item">
+              <div class="container">
+                <img src="http://localhost/online%20exam%20system/img/clock.png" alt="Image to align" class="img-responsive center-block" style="float: left;margin-left: 300px; margin-top: 18px;"/></div>
+              
+              <div class="tm-portfolio-description" style="float: right;margin-right: -400px;margin-left: -100px;">
+                <h3 class="tm-text-green" style="margin-top: -55px;font-size: 32px;margin-left: -280px;" >
+                  <u>BE&nbsp;ON&nbsp;TIME</u>
+                </h3>
+                <p class="mb-0" style="margin-left: -190px;font-size: 20px;">
+                  Always check out the announcement that made by teacher and take note of the exam<br> date and time. The exam will be available on time, within the duration set by the teacher.
+                </p>
+                </div>
+              </div>
+            </div>
+            <div class="tm-portfolio-item">
+              <div class="container">
+                <img src="http://localhost/online%20exam%20system/img/1st%20attempt.jpg" alt="Image to align" class="img-responsive center-block" style="float: left;margin-left: 300px; margin-top: 18px;"/></div>
+              
+              <div class="tm-portfolio-description" style="float: right;margin-right: -400px;margin-left: -650px;">
+                <h3 class="tm-text-green" style="margin-top: -25px;font-size: 32px; " >
+                  <u >ONLY&nbsp;ONE&nbsp;ATTEMPT</u>
+                </h3>
+                <p class="mb-0" style="margin-left: -310px;font-size: 20px;margin-top: 15px;">
+                  Student can only take the exam once, within the time set by the teacher. When student click the 'Start Exam' button, the student is considered already sit for the exam. If a student miss an exam, teacher can set another date<br> and time for the same exam and only students who miss the exam can take the re-open<br> exam.                </p>
+                </div>
+              </div>
+            </div>
+            <div class="tm-portfolio-item">
+              <div class="container">
+                <img src="http://localhost/online%20exam%20system/img/wifi.png" alt="Image to align" class="img-responsive center-block" style="float: left;margin-left: 300px; margin-top: 18px;"/></div>
+              
+              <div class="tm-portfolio-description" style="float: right;margin-right: -400px;margin-left: -660px;">
+                <h3 class="tm-text-green" style="margin-top: -25px;font-size: 32px;margin-left: 10px; " >
+                  <u >STABLE&nbsp;INTERNET&nbsp;CONNECTION</u>
+                </h3>
+                <p class="mb-0" style="margin-left: -500px;font-size: 20px;margin-top: 10px;">
+                  If your internet connection is disconnected suddenly, do not close the browser, refresh the question page when your device re-connect to the internet. If the exam is still available, you can still continue save answers.<br> However, if the exam time is expired, then you cannot answer the question anymore.
+                </div>
+              </div>
+            </div>
+            <div class="tm-portfolio-item">
+              <div class="container">
+                <img src="http://localhost/online%20exam%20system/img/browser.png" alt="Image to align" class="img-responsive center-block" style="float: left;margin-left: 300px; margin-top: 18px;"/></div>
+              
+              <div class="tm-portfolio-description" style="float: right;margin-right: -400px;margin-left: -660px;">
+                <h3 class="tm-text-green" style="margin-top: -55px;font-size: 32px; " >
+                  <u >DO&nbsp;NOT&nbsp;CLOSE&nbsp;BROWSER</u>
+                </h3>
+                <p class="mb-0" style="margin-left: -400px;font-size: 20px;">
+                  Do not Close the browser if you have not yet save your Answer
+                  Closing the browser means<br> exit the exam. If you did not click the Save button to save the answer for every question and close the browser, you are not answering the questions and will get zero mark.                </div>
+              </div>
+            </div>
+            <div class="tm-portfolio-item">
+              <div class="container">
+                <img src="http://localhost/online%20exam%20system/img/save.jpg" alt="Image to align" class="img-responsive center-block" style="float: left;margin-left: 300px; margin-top: 18px;"/></div>
+              
+              <div class="tm-portfolio-description" style="float: right;margin-right: -400px;margin-left: -650px;">
+                <h3 class="tm-text-green" style="margin-top: -55px;font-size: 32px; " >
+                  <u >SAVE&nbsp;YOUR&nbsp;ANSWER</u>
+                </h3>
+                <p class="mb-0" style="margin-left: -320px;font-size: 20px;">
+                  Remember to click the Save button to save the answer for every question. Even you did not <br>click 'Finish & Exit' button when you finish all questions, you still answered the questions <br> because your answers already saved.
+                  </p>
+                </div>
+            </div>
+
+    
+</section>
+      
+        <!-- End page content -->
+    </div>
+
+    <script src="/bundles/jquery?v=2u0aRenDpYxArEyILB59ETSCA2cfQkSMlxb6jbMBqf81"></script>
+
+    <script src="/bundles/jqueryval?v=ewwbEwxCzNIunbw9c2Y5X5_ldbOkIBIkUo-LvchX7I81"></script>
+
+    <script src="/bundles/kendo?v=NNn02k7MwRlKsxfLcThtev7vwOHQIwyHm8q-V0YT69Y1"></script>
+
+    <script src="/bundles/bootstrap?v=M4Nk6kIOwMFflsEKET0iPL9i5YBqbzMzvUOrd8gyCnw1"></script>
+
+    
+    <script>
+        $('.dropdown-toggle').click(function (e) {
+            if ($(document).width() > 768) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                if (url !== '#') {
+                    window.location.href = url;
+                }
+            }
+        });
+        // Get the Sidebar
+        var mySidebar = document.getElementById("mySidebar");
+
+        // Get the DIV with overlay effect
+        var overlayBg = document.getElementById("myOverlay");
+
+        // Toggle between showing and hiding the sidebar, and add overlay effect
+        function w3_open() {
+            if (mySidebar.style.display === 'block') {
+                mySidebar.style.display = 'none';
+                overlayBg.style.display = "none";
+            } else {
+                mySidebar.style.display = 'block';
+                overlayBg.style.display = "block";
+            }
+        }
+        // Close the sidebar with the close button
+        function w3_close() {
+            mySidebar.style.display = "none";
+            overlayBg.style.display = "none";
+        }
+        function displayItems() {
+            if ($("#manageAccountItems").is(":visible")) {
+                $("#manageAccountItems").slideUp("500", function () { });
+                $("#manageAccountItems").hide();
+                $("#downIcon").show();
+                $("#upIcon").hide();
+            }
+            else{
+                 $("#manageAccountItems").slideDown("500", function () { });
+                $("#manageAccountItems").show();
+                $("#downIcon").hide();
+                $("#upIcon").show();
+            }          
+        }
+    </script>
+</body>
+</html>

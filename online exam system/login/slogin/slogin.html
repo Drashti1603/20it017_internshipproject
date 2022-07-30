@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A powerful, useful, responsive, ideal online exam web portal for your school">
+    <meta name="keywords" content="asp.net online exam, school online exam, school announcement, exam">
+    <title>User Login</title>
+    <link href="/Content/kendo/css?v=EoExtBXPj2-aKNmGkf9v2h7GdE-upcXSBgqXerfBZ-41" rel="stylesheet"/>
+    <link href="http://localhost/online%20exam%20system/login/slogin/slogin.css" rel="stylesheet"/>
+    
+
+    <link href="/Content/css?v=swnb8zh305zK-3mIXp0qqqIEgfQUQj75fDVruZFNMN01" rel="stylesheet"/>
+
+    <script src="/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1"></script>
+
+    <script src="/bundles/jquery?v=2u0aRenDpYxArEyILB59ETSCA2cfQkSMlxb6jbMBqf81"></script>
+
+    <script src="/bundles/kendo?v=NNn02k7MwRlKsxfLcThtev7vwOHQIwyHm8q-V0YT69Y1"></script>
+
+    <script src="/bundles/custom?v=l1TvQEcyYMEAd8gYAJ3Pci5cNxDOkAY80o3igK4NUSs1"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />  <!--browser's tab icon-->
+    <style>
+       
+        body {
+            padding-top: 10px;
+        }
+
+        .w3-container {
+            background-color: white;
+        }
+
+        .descriptionText {
+            padding-top: 10px;
+            font-size: 17px;
+        }
+
+        .row-container {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .btn-custom {
+            width: 100%;
+        }
+
+        .w3-third {
+            padding-right: 10px;
+        }
+
+        .title-container {
+            padding: 8px 0px 32px 0px;
+        }
+
+        .homepageContainer {
+            padding: 50px;
+        }
+
+        @media (max-width:415px) {
+            #myNavbar {
+                width: 100%;
+            }
+
+            footer {
+                width: 100%;
+            }
+
+            .homepageContainer {
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+
+            .row-container {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+
+            .w3-third {
+                padding-right: 0px;
+            }
+
+            .row {
+                padding-left: 5px;
+                padding-right: 5px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body class="w3-light-grey">
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:0;margin-right:0;margin-top:30px;padding:0">
+
+    
+
+     
+
+        <!-- Overlay effect when opening sidebar on small screens -->
+ <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    
+    <div class="row col-md-12">
+        <div class="well col-md-7 center-block" style="float:none">
+            <div class="col-md-12 center-block" style="float:none">
+            <div class="row">
+                
+                <img src="http://localhost/online%20exam%20system/img/user.png" alt="logo" class="img-responsive center-block"/></div>
+                
+                <h2 class="text-center page-header" style="margin-top:0px">
+                    Student Login
+                </h2>
+<form action="slogin.php" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="XeEHUfqliGQWkULZ-42nJhrfE4P_v009YAAQm4m1J8K1c71VI5Dib_tGdsfe92rhtv4LUZJMJVKPUDAMh7SN7beCw405HvP-d_mYRTTKWFs1" />                    <div class="form-group">
+                        <div class="col-md-3 control-label" >
+                            <label style="margin-left: 150px;">Username/Email </label>
+                        </div>
+                        <div style="display:none" >
+                            <input class="k-textbox" id="Role" name="Role" value="Teacher" />
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <input class="k-textbox" data-val="true" data-val-required="The Username / Email field is required." id="username" name="username" style="width: 320px;margin-left: 120px;"/>
+                            </div>
+                            <div class="row ">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="username" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3 required control-label">
+                            <label for="Password" style="font-size: 16px;margin-left: 150px;">Password</label>
+                        </div>
+                        
+                        <div class="col-md-9">
+                            <div class="row">
+                                <input class="k-textbox" data-val="true" data-val-required="The Password field is required." id="password" name="password" type="password" style="width: 320px;margin-left:120px ;" />
+                            </div>
+                            <div class="row ">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="password" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row checkbox">
+                                <input type="submit" class="btn btn-custom" role="button" value="Login" style="margin-left: 130px;width: 200px;" />
+
+                            </div>
+                            <div class="row ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                        </div>
+                        <div class="col-md-9" style="margin-left: 380px;">
+                            <div class="row checkbox">
+                                <input class="k-checkbox" data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" type="checkbox" value="true" /><label class="k-checkbox-label" for="RememberMe">Remember me?</label><input name="RememberMe" type="hidden" value="false" />
+                            </div>
+                            <div class="row ">
+                                <a href="/Account/ForgotPassword" style="color:blue">Forgot your password?</a>
+                            </div>
+                        </div>
+                    </div>
+</form>                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    
+
+    <script src="/bundles/jquery?v=2u0aRenDpYxArEyILB59ETSCA2cfQkSMlxb6jbMBqf81"></script>
+
+    <script src="/bundles/jqueryval?v=ewwbEwxCzNIunbw9c2Y5X5_ldbOkIBIkUo-LvchX7I81"></script>
+
+    <script src="/bundles/kendo?v=NNn02k7MwRlKsxfLcThtev7vwOHQIwyHm8q-V0YT69Y1"></script>
+
+    <script src="/bundles/bootstrap?v=M4Nk6kIOwMFflsEKET0iPL9i5YBqbzMzvUOrd8gyCnw1"></script>
+
+    
+    <script>
+        // Toggle between showing and hiding the sidebar
+        function w3_open() {
+            if (mySidebar.style.display === 'block') {
+                $('#mySidebar').hide();
+                $('#myOverlay').hide();
+            } else {
+                $('#mySidebar').show();
+                $('#myOverlay').show();
+            }
+        }
+        // Close the sidebar with the close button
+        function w3_close() {
+            $('#mySidebar').hide();
+            $('#myOverlay').hide();
+        }
+    </script>  
+</body>
+</html>
+
+
+
+

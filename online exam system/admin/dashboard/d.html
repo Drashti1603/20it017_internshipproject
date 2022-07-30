@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A powerful, useful, responsive, ideal online exam web portal for your school">
+    <meta name="keywords" content="asp.net online exam, school online exam, school announcement, exam">
+    <title>Dashboard</title>
+    <link href="/Content/kendo/css?v=EoExtBXPj2-aKNmGkf9v2h7GdE-upcXSBgqXerfBZ-41" rel="stylesheet"/>
+    <link href="http://localhost/online%20exam%20system/admin/admin.css" rel="stylesheet"/>
+    <link href="http://localhost/online%20exam%20system/admin/dashboard/d.css" rel="stylesheet"/>
+    <link href="http://localhost/online%20exam%20system/home/home.css" rel="stylesheet"/>
+    <link href="http://localhost/online%20exam%20system/admin/manageAccount/viewprofile/vp.css" rel="stylesheet"/>
+
+    <link href="/Content/css?v=swnb8zh305zK-3mIXp0qqqIEgfQUQj75fDVruZFNMN01" rel="stylesheet"/>
+
+    <script src="/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1"></script>
+
+    <script src="/bundles/jquery?v=2u0aRenDpYxArEyILB59ETSCA2cfQkSMlxb6jbMBqf81"></script>
+
+    <script src="/bundles/kendo?v=NNn02k7MwRlKsxfLcThtev7vwOHQIwyHm8q-V0YT69Y1"></script>
+
+    <script src="/bundles/custom?v=l1TvQEcyYMEAd8gYAJ3Pci5cNxDOkAY80o3igK4NUSs1"></script>
+
+    <script src="/bundles/pako?v=AiINIs2SjJPxaUkuoDBvrG4-7iBN-jdwhvOswC72N1o1"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+ <!-- Load Pako ZLIB library to enable PDF compression -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" /> <!--browser's tab icon-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></script>
+    <!--export to pdf template-->
+    <script type="x/kendo-template" id="page-template">
+        <div class="page-template">
+            <div class="header">
+                <div style="float: right">Page #: pageNum # of #: totalPages #</div>
+                Exam
+            </div>
+            <div class="footer">
+                Page #: pageNum # of #: totalPages #
+            </div>
+        </div>
+    </script>
+    <style>
+        #mainContainerLayout{
+            margin-left:290px;
+            margin-top:15px;
+            margin-right:10px;
+        }
+    </style>
+</head>
+<body class="w3-light-grey">
+
+    <!-- Top container -->
+    <div id="topBar" class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+        <button type="button" class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+        <span class="w3-bar-item w3-right"><form action="/Account/LogOff" class="navbar-right" id="logoutForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="mFyMG9hRSoZfuHJy-pdGzeGALwGqTYamBN9Pf6GmT_EpwUo0umvVNFtTlwDf4nqu5vWGlvZH02W-JMpbtv9XcbEmdgxwC8c40adMjaYU-jtvmX6vFVDBfTs0iI9faUI1x6gq1howoeiPTEeJfEy6aA2" />    <ul style="list-style:none" class="btn btn-menu">
+        <li class="menu-item" id="userNameMenu"><i class="glyphicon glyphicon-user"></i></a></li>
+    </ul>
+        <ul style="list-style:none" class="btn btn-menu">
+            <li id="logOffMenu"><a href="http://localhost/online%20exam%20system/home/home.html">Log out</a></li>
+        </ul> 
+</form>
+<script>
+    $(document).ready(function () {
+        if ('Index' == 'TakeExam') {
+            //$('#userNameMenu').hide();
+            $('#logOffMenu').hide();
+            //document.getElementById("userNameMenu").disabled = true;
+            //document.getElementById("logOffMenu").disabled = true;
+        }
+    });
+</script>
+</span>
+
+    </div>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:280px;overflow-y: scroll !important;max-height: 95% !important;" id="mySidebar">
+        <br>
+        <div class="w3-container w3-row" style="padding-top:0;padding-bottom:0">
+            <div class="w3-col s4">
+                <img src="http://localhost/online%20exam%20system/img/oe2.png" class="w3-margin-right logoLeftNav">                
+            </div>
+            <div class="w3-col s8 w3-bar" style="padding-top:0;padding-bottom:0">
+                <span>
+                    Welcome,
+                    <strong><br>
+admin                    </strong>
+                </span>
+                <br>
+            </div>
+        </div>
+        <hr>
+        <div class="w3-bar-block">
+            
+            <a class="w3-bar-item w3-button w3-padding" href="http://localhost/online%20exam%20system/admin/admin%20management/admin%20management.php"><i class="glyphicon glyphicon-user"></i> Admin Management</a>
+            <a href="http://localhost/online%20exam%20system/admin/subject%20management1/sub.php" class="w3-bar-item w3-button w3-padding "><i class="glyphicon glyphicon-book"></i><span style="padding-left:10px;">Subject management</span></a>
+            <a class="w3-bar-item w3-button w3-padding " href="http://localhost/online%20exam%20system/admin/student%20management/stu.php"><i class="fa fa-child"></i> Student Management</a>
+            <a href="http://localhost/online%20exam%20system/admin/dashboard/d.html" class="w3-bar-item w3-button w3-padding  w3-blue"><i class="glyphicon glyphicon-dashboard"></i><span style="padding-left:10px;">Dashboard</span></a>
+    
+            <a href="http://localhost/online%20exam%20system/admin/userdirectory/ud.html" class="w3-bar-item w3-button w3-padding "><i class="fa fa-address-card"></i><span style="padding-left:10px;">User Directory</span></a>
+            
+        <br />
+    </div>
+    </nav>
+
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div id="mainContainerLayout" class="w3-main">
+
+        
+
+
+<header class="w3-container">
+    <h5><b><i class="glyphicon glyphicon-dashboard"></i> Dashboard</b></h5>
+</header>
+<div class="w3-row-padding w3-margin-bottom">
+    
+
+    <div class="w3-quarter">
+        <div class="w3-container w3-white w3-padding-16">
+            <div class="w3-left w3-text-teal"><i class="fa fa-graduation-cap w3-xxxlarge"></i></div>
+            <div class="w3-right">
+                <h2>18</h2>
+            </div>
+            <div class="w3-clear"></div>
+            <h4>Total Students</h4>
+        </div>
+    </div>
+
+    <div class="w3-quarter">
+        <div class="w3-container w3-white w3-padding-16">
+            <div class="w3-left w3-text-orange"><i class="fa fa-cogs w3-xxxlarge"></i></div>
+            <div class="w3-right">
+                <h2>5</h2>
+            </div>
+            <div class="w3-clear"></div>
+            <h4>Total Admins</h4>
+        </div>
+    </div>
+</div>
+
+    <div class="w3-half">
+        <div class="w3-container w3-white w3-padding-16">
+            <div class="w3-left w3-text-purple"><i class="glyphicon glyphicon-book w3-xxxlarge"></i></div>
+            <div class="w3-right">
+                <h2>11</h2>
+            </div>
+            <div class="w3-clear"></div>
+            <h4>Total Subjects</h4>
+        </div>
+    </div>
+</div>
+
+
+      
+        <!-- End page content -->
+    </div>
+
+    <script src="/bundles/jquery?v=2u0aRenDpYxArEyILB59ETSCA2cfQkSMlxb6jbMBqf81"></script>
+
+    <script src="/bundles/jqueryval?v=ewwbEwxCzNIunbw9c2Y5X5_ldbOkIBIkUo-LvchX7I81"></script>
+
+    <script src="/bundles/kendo?v=NNn02k7MwRlKsxfLcThtev7vwOHQIwyHm8q-V0YT69Y1"></script>
+
+    <script src="/bundles/bootstrap?v=M4Nk6kIOwMFflsEKET0iPL9i5YBqbzMzvUOrd8gyCnw1"></script>
+
+    
+    <script>
+        $('.dropdown-toggle').click(function (e) {
+            if ($(document).width() > 768) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                if (url !== '#') {
+                    window.location.href = url;
+                }
+            }
+        });
+        // Get the Sidebar
+        var mySidebar = document.getElementById("mySidebar");
+
+        // Get the DIV with overlay effect
+        var overlayBg = document.getElementById("myOverlay");
+
+        // Toggle between showing and hiding the sidebar, and add overlay effect
+        function w3_open() {
+            if (mySidebar.style.display === 'block') {
+                mySidebar.style.display = 'none';
+                overlayBg.style.display = "none";
+            } else {
+                mySidebar.style.display = 'block';
+                overlayBg.style.display = "block";
+            }
+        }
+        // Close the sidebar with the close button
+        function w3_close() {
+            mySidebar.style.display = "none";
+            overlayBg.style.display = "none";
+        }
+        function displayItems() {
+            if ($("#manageAccountItems").is(":visible")) {
+                $("#manageAccountItems").slideUp("500", function () { });
+                $("#manageAccountItems").hide();
+                $("#downIcon").show();
+                $("#upIcon").hide();
+            }
+            else{
+                $("#manageAccountItems").slideDown("500", function () { });
+                $("#manageAccountItems").show();
+                $("#downIcon").hide();
+                $("#upIcon").show();
+            }          
+        }
+    </script>
+</body>
+</html>
